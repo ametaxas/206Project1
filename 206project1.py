@@ -92,14 +92,8 @@ def mySortPrint(a,col,fileName):
 
 	#Your code here:
 	outfile = open(fileName, 'w')
-	def pullInfo(dic):
-		return (dic['First'],dic['Last'],dic['Email'])
-	master_dic = {}
-	for dic in a:
-		master_dic[a.index(dic)] = dic[col] #key is the index of the dif, value is the sorted key
-	for ind in sorted(master_dic, key = lambda x: master_dic[x]):
-		x = pullInfo(a[int(ind)]) #pulling first, last and email
-		outfile.write("{},{},{}\n".format(*x))  #writing info into csv
+	for dic in sorted(a, key = lambda x: x[col]):
+		outfile.write("{},{},{}\n".format(dic['First'],dic['Last'],dic['Email']))  #writing info into csv
 	outfile.close()
 
 
